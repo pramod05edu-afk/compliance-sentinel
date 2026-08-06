@@ -50,8 +50,7 @@ pytest tests -q --cov=src --cov-report=term
 
 ## Team
 
-Built jointly with [Anuj Kamble]
- ([@kambleanuj](https://github.com/friendhandle)) as part of the Responsible AI & Data Ethics course, SRH University Heidelberg, 2026.
+Built jointly with [Anuj Kamble]([@kambleanuj](https://github.com/kambleanuj)) as part of the...
 
 ## License
 
