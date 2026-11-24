@@ -2,7 +2,7 @@
 
 A responsible-AI proposal triage agent. Screens every project proposal against six policies — biometric use, data-selling, consent, discrimination, human oversight, dark patterns — suggests a compliant rewrite for flagged proposals, and routes every decision through a human approval gate.
 
-**🚀 Live demo:** https://compliance-sentinel-s5tvnug6ver7udr8zdjgx7.streamlit.app/ (try the prompt-injection and reworded-violation examples)
+**🚀 Live demo:** https://compliance-sentinel-demo.streamlit.app/ (try the prompt-injection and reworded-violation examples)
 
 Designed to demonstrate EU AI Act Article 14 compliance by architecture, not by policy document.
 
