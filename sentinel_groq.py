@@ -26,11 +26,15 @@ MODEL = "openai/gpt-oss-120b"     # current free Groq model; fallback: "llama-3.
 
 def get_client(api_key: str | None = None) -> groq.Groq:
     """Build a Groq client. Reads GROQ_API_KEY from the environment if no key is passed."""
-    client = groq.Groq(api_key=os.environ["GROQ_API_KEY"])
+    key = api_key or os.environ.get("GROQ_API_KEY")
+    if not key:
+        raise RuntimeError("No Groq API key: pass api_key or set GROQ_API_KEY.")
+    return groq.Groq(api_key=key)
 
 
 def classify_with_groq(text: str, client: groq.Groq, system_prompt: str,
-                       model: str = MODEL, max_retries: int = 3) -> dict:
+                       model: str = MODEL, max_retries: int = 3,
+                       max_tokens: int = 1024) -> dict:
     """
     Same contract as sentinel_llm.classify_with_llm, but via Groq's chat.completions API.
     Returns {violates, policies, confidence, reasoning, _raw} or {error, violates=None}.
@@ -40,7 +44,7 @@ def classify_with_groq(text: str, client: groq.Groq, system_prompt: str,
         try:
             resp = client.chat.completions.create(
                 model=model,
-                max_tokens=300,
+                max_tokens=max_tokens,              # gpt-oss reasons first; 300 can truncate the JSON
                 temperature=0,                      # deterministic classification
                 messages=[
                     {"role": "system", "content": system_prompt},
