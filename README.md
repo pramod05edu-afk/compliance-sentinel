@@ -2,6 +2,8 @@
 
 A responsible-AI proposal triage agent. Screens every project proposal against six policies — biometric use, data-selling, consent, discrimination, human oversight, dark patterns — suggests a compliant rewrite for flagged proposals, and routes every decision through a human approval gate.
 
+**🚀 Live demo:** https://compliance-sentinel-s5tvnug6ver7udr8zdjgx7.streamlit.app/ (try the prompt-injection and reworded-violation examples)
+
 Designed to demonstrate EU AI Act Article 14 compliance by architecture, not by policy document.
 
 ## Highlights
@@ -13,10 +15,11 @@ Designed to demonstrate EU AI Act Article 14 compliance by architecture, not by 
 
 ## Tech
 
-Python · pandas · scikit-learn · sentence-transformers · Anthropic · Groq · pytest · ipywidgets
+Python · pandas · scikit-learn · sentence-transformers · Anthropic · Groq · Streamlit · pytest · ipywidgets
 
 ## What's inside
 
+- `app/streamlit_app.py` — the interactive demo (run locally: `pip install -r app/requirements.txt && streamlit run app/streamlit_app.py`)
 - `sentinel_COMBINED_final.ipynb` — the main notebook (weeks 1–3)
 - `sentinel_core.py` — cleaning + three-rung detector ladder
 - `sentinel_llm.py` — Anthropic LLM rung with prompt-injection defence
